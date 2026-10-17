@@ -1262,43 +1262,32 @@ with st.container(key="chapter4_dashboard"):
 
 
     @st.cache_data
-
     def load_model_insights():
-
         """Load the precomputed grouped cross-validation reports."""
-
         required_paths = [GROUP_CV_PATH, GROUP_ERROR_PATH, PRICE_BAND_PATH]
-
         missing = [path.name for path in required_paths if not path.exists()]
 
-        st.write("Debug - PROJECT_ROOT:", str(PROJECT_ROOT))
-        st.write(
-            "Debug - reports folder exists:",
-            (PROJECT_ROOT / "reports").exists(),
-        )
-        st.write(
-            "Debug - reports folder contents:",
-            [p.name for p in (PROJECT_ROOT / "reports").glob("*")]
-            if (PROJECT_ROOT / "reports").exists()
-            else "Folder not found",
-        )
-        st.write(
-            "Debug - required report paths:",
-            [(str(p), p.exists()) for p in required_paths],
-        )
-
         if missing:
-
+            st.error(f"Missing report files: {missing}")
             return None, None, None, missing
 
+        try:
+            metrics = pd.read_csv(GROUP_CV_PATH)
+            predictions = pd.read_csv(GROUP_ERROR_PATH)
+            price_bands = pd.read_csv(PRICE_BAND_PATH)
 
-        metrics = pd.read_csv(GROUP_CV_PATH)
+            st.write("Metrics shape:", metrics.shape)
+            st.write("Metrics columns:", metrics.columns.tolist())
+            st.write("Predictions shape:", predictions.shape)
+            st.write("Predictions columns:", predictions.columns.tolist())
+            st.write("Price bands shape:", price_bands.shape)
+            st.write("Price bands columns:", price_bands.columns.tolist())
 
-        predictions = pd.read_csv(GROUP_ERROR_PATH)
+            return metrics, predictions, price_bands, []
 
-        price_bands = pd.read_csv(PRICE_BAND_PATH)
-
-        return metrics, predictions, price_bands, []
+        except Exception as exc:
+            st.error(f"Error loading model insights: {exc}")
+            return None, None, None, ["CSV loading failed"]
 
 
     metrics_df, oof_predictions, band_errors, missing_reports = load_model_insights()
@@ -1892,7 +1881,18 @@ footer_html = """
     </p>
 
     <nav class="minimal-footer-socials" aria-label="Social links">
-       
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=praneethk9912@gmail.com"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"
+                      fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <path d="m4 7 8 6 8-6" fill="none"
+                      stroke="currentColor" stroke-width="1.7"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+
         <a href="https://github.com/praneethk99"
            target="_blank" rel="noopener noreferrer"
            aria-label="GitHub" title="GitHub">
@@ -1951,7 +1951,9 @@ footer_html = """
         </a>
     </nav>
 
-   
+    <p class="minimal-footer-copyright">
+        © 2026 Praneeth Koushik Sripada. All rights reserved.
+    </p>
 </footer>
 """
 
