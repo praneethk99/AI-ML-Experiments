@@ -1271,6 +1271,13 @@ with st.container(key="chapter4_dashboard"):
 
         missing = [path.name for path in required_paths if not path.exists()]
 
+st.write("Debug - PROJECT_ROOT:", str(PROJECT_ROOT))
+st.write("Debug - reports folder exists:", (PROJECT_ROOT / "reports").exists())
+st.write("Debug - reports folder contents:",
+         [p.name for p in (PROJECT_ROOT / "reports").glob("*")]
+         if (PROJECT_ROOT / "reports").exists() else "Folder not found")
+st.write("Debug - required report paths:",
+         [(str(p), p.exists()) for p in required_paths])
         if missing:
 
             return None, None, None, missing
