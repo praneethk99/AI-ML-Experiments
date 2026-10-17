@@ -1,0 +1,2234 @@
+/* =========================================================
+
+
+   CAR PRICE PREDICTOR
+
+
+   Cinematic Automotive Design System
+
+
+   ========================================================= */
+
+
+:root {
+
+
+    --midnight: #090c12;
+
+
+    --surface: #111722;
+
+
+    --surface-light: #1b2432;
+
+
+    --accent: #a9baff;
+
+
+    --accent-hover: #d4dcff;
+
+
+    --text-primary: #f7f8fc;
+
+
+    --text-secondary: #c0c8d6;
+
+
+    --text-muted: #929daf;
+
+
+    --border: rgba(255, 255, 255, 0.12);
+
+
+    --input-bg: #171e2a;
+
+
+    --input-border: #3a4557;
+
+
+    --option-hover: #293650;
+
+
+}
+
+
+/* =========================================================
+
+
+   GLOBAL LAYOUT
+
+
+   ========================================================= */
+
+
+.stApp {
+
+
+    background: var(--midnight);
+
+
+    color: var(--text-primary);
+
+
+}
+
+
+[data-testid="stHeader"] {
+
+
+    background: transparent;
+
+
+}
+
+
+[data-testid="stMain"] {
+
+
+    background: var(--midnight);
+
+
+}
+
+
+[data-testid="stMainBlockContainer"] {
+
+
+    max-width: 1240px;
+
+
+    padding-top: 1.25rem;
+
+
+    padding-bottom: 5rem;
+
+
+}
+
+
+/* =========================================================
+
+
+   TYPOGRAPHY
+
+
+   ========================================================= */
+
+
+h1,
+
+
+h2,
+
+
+h3,
+
+
+h4,
+
+
+h5,
+
+
+h6 {
+
+
+    color: var(--text-primary) !important;
+
+
+    letter-spacing: -0.035em;
+
+
+}
+
+
+p,
+
+
+label,
+
+
+[data-testid="stCaptionContainer"] {
+
+
+    color: var(--text-secondary);
+
+
+}
+
+
+.stMarkdown {
+
+
+    color: var(--text-secondary);
+
+
+}
+
+
+[data-testid="stCaptionContainer"] p {
+
+
+    color: var(--text-muted) !important;
+
+
+}
+
+
+/* =========================================================
+
+
+   HERO COMPANION STYLES
+
+
+   The video hero has its own self-contained iframe CSS.
+
+
+   ========================================================= */
+
+
+.story-eyebrow {
+
+
+    color: var(--accent);
+
+
+    font-size: 0.75rem;
+
+
+    font-weight: 800;
+
+
+    letter-spacing: 0.2em;
+
+
+    text-transform: uppercase;
+
+
+    margin-bottom: 1rem;
+
+
+}
+
+
+.story-title {
+
+
+    position: relative;
+
+
+    color: var(--text-primary) !important;
+
+
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+
+
+    font-weight: 800;
+
+
+    line-height: 0.98;
+
+
+    letter-spacing: -0.065em;
+
+
+    max-width: 800px;
+
+
+    margin: 0 0 1.5rem;
+
+
+}
+
+
+.story-description {
+
+
+    position: relative;
+
+
+    color: #e0e5ef !important;
+
+
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+
+
+    line-height: 1.8;
+
+
+    max-width: 620px;
+
+
+}
+
+
+/* =========================================================
+
+
+   STORY CHAPTERS
+
+
+   ========================================================= */
+
+
+.story-section {
+
+
+    position: relative;
+
+
+    padding: clamp(2.5rem, 6vw, 5rem) 0 2.5rem;
+
+
+    margin-bottom: 1.5rem;
+
+
+    border-bottom: 1px solid var(--border);
+
+
+    scroll-margin-top: 2rem;
+
+
+}
+
+
+.story-section-number {
+
+
+    color: var(--accent);
+
+
+    font-size: 0.78rem;
+
+
+    font-weight: 800;
+
+
+    letter-spacing: 0.16em;
+
+
+}
+
+
+.story-section-title {
+
+
+    color: var(--text-primary) !important;
+
+
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+
+
+    line-height: 1.08;
+
+
+    letter-spacing: -0.045em;
+
+
+    max-width: 780px;
+
+
+    margin: 1rem 0;
+
+
+}
+
+
+.story-section-description {
+
+
+    max-width: 680px;
+
+
+    color: var(--text-secondary) !important;
+
+
+    font-size: 1.05rem;
+
+
+    line-height: 1.9;
+
+
+}
+
+
+#car-story,
+
+
+#price-reveal,
+
+
+#car-form-anchor {
+
+
+    scroll-margin-top: 1.5rem;
+
+
+}
+
+
+/* =========================================================
+
+
+   CAR FORM AND CONTAINERS
+
+
+   ========================================================= */
+
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+
+
+    background: rgba(17, 23, 34, 0.75);
+
+
+    border: 1px solid var(--border) !important;
+
+
+    border-radius: 18px !important;
+
+
+    padding: 0.5rem;
+
+
+}
+
+
+[data-testid="stMetric"] {
+
+
+    background: var(--surface);
+
+
+    border: 1px solid var(--border);
+
+
+    border-radius: 16px;
+
+
+    padding: 1.5rem;
+
+
+}
+
+
+[data-testid="stMetricLabel"],
+
+
+[data-testid="stMetricLabel"] p {
+
+
+    color: var(--text-secondary) !important;
+
+
+}
+
+
+[data-testid="stMetricValue"] {
+
+
+    color: var(--text-primary) !important;
+
+
+    font-weight: 800;
+
+
+}
+
+
+/* =========================================================
+
+
+   FORM LABELS
+
+
+   ========================================================= */
+
+
+.stSelectbox label,
+
+
+.stNumberInput label,
+
+
+.stSlider label {
+
+
+    color: var(--text-primary) !important;
+
+
+    font-weight: 650 !important;
+
+
+}
+
+
+/* =========================================================
+
+
+   SELECTBOX — CLOSED CONTROL
+
+
+   ========================================================= */
+
+
+/* Main closed selectbox control */
+
+
+.stSelectbox [data-baseweb="select"] > div {
+
+
+    background-color: var(--input-bg) !important;
+
+
+    border: 1px solid var(--input-border) !important;
+
+
+    border-radius: 10px !important;
+
+
+    color: var(--text-primary) !important;
+
+
+    min-height: 44px;
+
+
+    box-shadow: none !important;
+
+
+}
+
+
+/* Selected value */
+
+
+.stSelectbox [data-baseweb="select"] [role="combobox"],
+
+
+.stSelectbox [data-baseweb="select"] input,
+
+
+.stSelectbox [data-baseweb="select"] div,
+
+
+.stSelectbox [data-baseweb="select"] span {
+
+
+    color: var(--text-primary);
+
+
+}
+
+
+/* Placeholder text */
+
+
+.stSelectbox [data-baseweb="select"] input::placeholder {
+
+
+    color: var(--text-muted) !important;
+
+
+    opacity: 1;
+
+
+}
+
+
+/* Dropdown arrow */
+
+
+.stSelectbox [data-baseweb="select"] svg {
+
+
+    fill: var(--text-secondary) !important;
+
+
+    color: var(--text-secondary) !important;
+
+
+}
+
+
+/* Clear selection icon */
+
+
+.stSelectbox [data-baseweb="select"] [aria-label="Clear value"] {
+
+
+    color: var(--text-secondary) !important;
+
+
+}
+
+
+/* Hover and keyboard focus */
+
+
+.stSelectbox [data-baseweb="select"] > div:hover {
+
+
+    border-color: var(--accent) !important;
+
+
+}
+
+
+.stSelectbox [data-baseweb="select"]:focus-within > div {
+
+
+    border-color: var(--accent) !important;
+
+
+    box-shadow: 0 0 0 2px rgba(169, 186, 255, 0.18) !important;
+
+
+}
+
+
+/* =========================================================
+
+
+   SELECTBOX — OPEN DROPDOWN POPUP
+
+
+   Important: popup elements may be mounted outside the
+
+
+   original selectbox container.
+
+
+   ========================================================= */
+
+
+/* Popup outer surfaces */
+
+
+[data-baseweb="popover"],
+
+
+[data-baseweb="popover"] > div,
+
+
+[data-baseweb="popover"] > div > div,
+
+
+[data-baseweb="popover"] [data-baseweb="menu"],
+
+
+[data-baseweb="popover"] [role="listbox"],
+
+
+[data-baseweb="menu"],
+
+
+[role="listbox"] {
+
+
+    background-color: #111722 !important;
+
+
+    color: #f7f8fc !important;
+
+
+    border-color: #3a4557 !important;
+
+
+}
+
+
+/* Popup border, corners and shadow */
+
+
+[data-baseweb="popover"] {
+
+
+    border: 1px solid #3a4557 !important;
+
+
+    border-radius: 10px !important;
+
+
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5) !important;
+
+
+    overflow: hidden !important;
+
+
+}
+
+
+/* Menu list container */
+
+
+[data-baseweb="menu"] ul,
+
+
+[data-baseweb="menu"] [role="listbox"],
+
+
+[role="listbox"] {
+
+
+    padding: 4px !important;
+
+
+    margin: 0 !important;
+
+
+    background: #111722 !important;
+
+
+}
+
+
+/* Every dropdown option */
+
+
+[data-baseweb="popover"] [role="option"],
+
+
+[data-baseweb="menu"] [role="option"],
+
+
+[role="listbox"] [role="option"] {
+
+
+    background-color: #111722 !important;
+
+
+    color: #f7f8fc !important;
+
+
+    border-radius: 6px !important;
+
+
+    min-height: 36px;
+
+
+}
+
+
+/* Option text and nested elements */
+
+
+[data-baseweb="popover"] [role="option"] *,
+
+
+[data-baseweb="menu"] [role="option"] *,
+
+
+[role="listbox"] [role="option"] * {
+
+
+    color: #f7f8fc !important;
+
+
+}
+
+
+/* Hovered option */
+
+
+[data-baseweb="popover"] [role="option"]:hover,
+
+
+[data-baseweb="menu"] [role="option"]:hover,
+
+
+[role="listbox"] [role="option"]:hover {
+
+
+    background-color: #293650 !important;
+
+
+    color: #ffffff !important;
+
+
+}
+
+
+/* Keyboard-focused option */
+
+
+[data-baseweb="popover"] [role="option"]:focus,
+
+
+[data-baseweb="menu"] [role="option"]:focus,
+
+
+[role="listbox"] [role="option"]:focus {
+
+
+    background-color: #293650 !important;
+
+
+    color: #ffffff !important;
+
+
+    outline: 1px solid var(--accent);
+
+
+}
+
+
+/* Selected option */
+
+
+[data-baseweb="popover"] [role="option"][aria-selected="true"],
+
+
+[data-baseweb="menu"] [role="option"][aria-selected="true"],
+
+
+[role="listbox"] [role="option"][aria-selected="true"] {
+
+
+    background-color: #35435e !important;
+
+
+    color: #ffffff !important;
+
+
+}
+
+
+/* Text inside selected options */
+
+
+[data-baseweb="popover"] [role="option"][aria-selected="true"] *,
+
+
+[data-baseweb="menu"] [role="option"][aria-selected="true"] *,
+
+
+[role="listbox"] [role="option"][aria-selected="true"] * {
+
+
+    color: #ffffff !important;
+
+
+}
+
+
+/* Popup scrollbar */
+
+
+[data-baseweb="menu"] ::-webkit-scrollbar,
+
+
+[role="listbox"] ::-webkit-scrollbar {
+
+
+    width: 8px;
+
+
+}
+
+
+[data-baseweb="menu"] ::-webkit-scrollbar-track,
+
+
+[role="listbox"] ::-webkit-scrollbar-track {
+
+
+    background: #111722;
+
+
+}
+
+
+[data-baseweb="menu"] ::-webkit-scrollbar-thumb,
+
+
+[role="listbox"] ::-webkit-scrollbar-thumb {
+
+
+    background: #3a4557;
+
+
+    border-radius: 8px;
+
+
+}
+
+
+/* =========================================================
+
+   NUMBER INPUTS — PLAIN WHITE FIELDS
+
+   ========================================================= */
+
+
+.stNumberInput [data-baseweb="input"],
+
+.stNumberInput [data-baseweb="input"] > div {
+
+    background: #ffffff !important;
+
+    border: 1px solid #d1d5db !important;
+
+    border-radius: 6px !important;
+
+    box-shadow: none !important;
+
+    outline: none !important;
+
+}
+
+
+.stNumberInput input {
+
+    background: #ffffff !important;
+
+    color: #000000 !important;
+
+    border: 0 !important;
+
+    border-radius: 6px !important;
+
+    min-height: 40px;
+
+    box-shadow: none !important;
+
+    outline: none !important;
+
+    caret-color: #000000 !important;
+
+}
+
+
+.stNumberInput [data-baseweb="input"]:focus-within,
+
+.stNumberInput [data-baseweb="input"]:focus-within > div,
+
+.stNumberInput input:focus {
+
+    background: #ffffff !important;
+
+    border-color: #d1d5db !important;
+
+    box-shadow: none !important;
+
+    outline: none !important;
+
+}
+
+
+/* Minus and plus controls */
+
+.stNumberInput button {
+
+    background: #ffffff !important;
+
+    color: #000000 !important;
+
+    border-color: #d1d5db !important;
+
+    box-shadow: none !important;
+
+}
+
+
+.stNumberInput button:hover,
+
+.stNumberInput button:focus,
+
+.stNumberInput button:focus-visible {
+
+    background: #f3f4f6 !important;
+
+    color: #000000 !important;
+
+    border-color: #d1d5db !important;
+
+    box-shadow: none !important;
+
+    outline: none !important;
+
+}
+
+
+/* =========================================================
+
+
+   BUTTONS
+
+
+   ========================================================= */
+
+
+.stButton > button,
+
+
+.stFormSubmitButton > button {
+
+
+    min-height: 50px;
+
+
+    border-radius: 999px !important;
+
+
+    border: 1px solid var(--accent) !important;
+
+
+    background: var(--accent) !important;
+
+
+    color: #101522 !important;
+
+
+    font-weight: 800 !important;
+
+
+    opacity: 1 !important;
+
+
+    transition:
+
+
+        transform 180ms ease,
+
+
+        box-shadow 180ms ease,
+
+
+        background 180ms ease;
+
+
+}
+
+
+.stButton > button p,
+
+
+.stFormSubmitButton > button p,
+
+
+.stButton > button span,
+
+
+.stFormSubmitButton > button span {
+
+
+    color: #101522 !important;
+
+
+    opacity: 1 !important;
+
+
+}
+
+
+.stButton > button:hover,
+
+
+.stFormSubmitButton > button:hover {
+
+
+    background: var(--accent-hover) !important;
+
+
+    border-color: var(--accent-hover) !important;
+
+
+    color: #101522 !important;
+
+
+    transform: translateY(-2px);
+
+
+    box-shadow: 0 10px 30px rgba(154, 174, 255, 0.2);
+
+
+}
+
+
+.stButton > button:focus-visible,
+
+
+.stFormSubmitButton > button:focus-visible {
+
+
+    outline: 3px solid #ffffff !important;
+
+
+    outline-offset: 3px;
+
+
+}
+
+
+.stButton > button:disabled,
+
+
+.stFormSubmitButton > button:disabled {
+
+
+    background: #343d50 !important;
+
+
+    border-color: #343d50 !important;
+
+
+    color: #c4ccda !important;
+
+
+    opacity: 1 !important;
+
+
+}
+
+
+/* =========================================================
+
+
+   PRICE REVEAL
+
+
+   ========================================================= */
+
+
+.price-reveal {
+
+
+    padding-top: 3rem;
+
+
+}
+
+
+.result-eyebrow {
+
+
+    margin: 1.5rem 0 0.75rem;
+
+
+    color: var(--accent);
+
+
+    font-size: 0.8rem;
+
+
+    font-weight: 800;
+
+
+    letter-spacing: 0.16em;
+
+
+}
+
+
+/* =========================================================
+
+
+   ALERTS, EXPANDERS AND LINKS
+
+
+   ========================================================= */
+
+
+a:not(.story-cta) {
+
+
+    color: var(--accent);
+
+
+}
+
+
+[data-testid="stAlert"] {
+
+
+    border-radius: 12px;
+
+
+}
+
+
+[data-testid="stExpander"] {
+
+
+    border: 1px solid var(--border);
+
+
+    border-radius: 12px;
+
+
+}
+
+
+[data-testid="stExpander"] summary {
+
+
+    color: var(--text-primary) !important;
+
+
+}
+
+
+/* =========================================================
+
+
+   ANIMATION
+
+
+   ========================================================= */
+
+
+@keyframes hero-enter {
+
+
+    from {
+
+
+        opacity: 0;
+
+
+        transform: translateY(12px);
+
+
+    }
+
+
+    to {
+
+
+        opacity: 1;
+
+
+        transform: translateY(0);
+
+
+    }
+
+
+}
+
+
+/* =========================================================
+
+
+   RESPONSIVE DESIGN
+
+
+   ========================================================= */
+
+
+@media (max-width: 768px) {
+
+
+    [data-testid="stMainBlockContainer"] {
+
+
+        padding: 0.75rem 1rem 3rem;
+
+
+    }
+
+
+    .story-hero {
+
+
+        min-height: 500px;
+
+
+        padding: 1.5rem;
+
+
+        border-radius: 16px;
+
+
+    }
+
+
+    .hero-video {
+
+
+        object-position: 58% center;
+
+
+    }
+
+
+    .hero-overlay {
+
+
+        background:
+
+
+            linear-gradient(
+
+
+                90deg,
+
+
+                rgba(5, 8, 14, 0.86),
+
+
+                rgba(5, 8, 14, 0.42)
+
+
+            ),
+
+
+            linear-gradient(
+
+
+                0deg,
+
+
+                rgba(5, 8, 14, 0.8),
+
+
+                transparent
+
+
+            );
+
+
+    }
+
+
+    .story-title {
+
+
+        font-size: clamp(2.5rem, 11vw, 4rem);
+
+
+    }
+
+
+    .story-section {
+
+
+        padding: 2.5rem 0;
+
+
+    }
+
+
+    .hero-cta {
+
+
+        align-items: flex-start;
+
+
+        flex-direction: column;
+
+
+    }
+
+
+    .hero-index {
+
+
+        display: none;
+
+
+    }
+
+
+    .story-cta {
+
+
+        width: fit-content;
+
+
+        max-width: 100%;
+
+
+    }
+
+
+}
+
+
+/* =========================================================
+
+
+   ACCESSIBILITY
+
+
+   ========================================================= */
+
+
+@media (prefers-reduced-motion: reduce) {
+
+
+    *,
+
+
+    *::before,
+
+
+    *::after {
+
+
+        animation-duration: 0.01ms !important;
+
+
+        animation-iteration-count: 1 !important;
+
+
+        scroll-behavior: auto !important;
+
+
+        transition-duration: 0.01ms !important;
+
+
+    }
+
+
+}
+
+
+/* =========================================================
+
+   CHAPTER 04 — CINEMATIC DATA TABLES
+
+   ========================================================= */
+
+.cinematic-table-wrap {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin: 0.8rem 0 1.1rem;
+
+    border: 1px solid rgba(132, 158, 202, 0.22);
+
+    border-radius: 14px;
+
+    background: linear-gradient(135deg, rgba(12, 23, 42, 0.94), rgba(7, 15, 29, 0.98));
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    scrollbar-color: rgba(124, 131, 255, 0.45) rgba(8, 16, 29, 0.8);
+
+}
+
+.cinematic-table {
+
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    color: #dce7f8;
+
+    font-size: 0.9rem;
+
+    line-height: 1.45;
+
+    background: transparent;
+
+}
+
+.cinematic-table thead th {
+
+    padding: 0.85rem 1rem;
+
+    text-align: left;
+
+    font-weight: 600;
+
+    letter-spacing: 0.025em;
+
+    color: #aebfe0;
+
+    background: linear-gradient(90deg, rgba(80, 103, 169, 0.18), rgba(33, 59, 94, 0.16));
+
+    border-bottom: 1px solid rgba(132, 158, 202, 0.25);
+
+    white-space: nowrap;
+
+}
+
+.cinematic-table thead th:first-child { border-top-left-radius: 13px; }
+
+.cinematic-table thead th:last-child { border-top-right-radius: 13px; }
+
+.cinematic-table tbody td {
+
+    padding: 0.78rem 1rem;
+
+    color: #d7e2f4;
+
+    border-bottom: 1px solid rgba(132, 158, 202, 0.11);
+
+    background: rgba(8, 18, 33, 0.38);
+
+    transition: background 160ms ease, color 160ms ease;
+
+}
+
+.cinematic-table tbody tr:nth-child(even) td { background: rgba(30, 47, 75, 0.24); }
+
+.cinematic-table tbody tr:hover td {
+
+    color: #ffffff;
+
+    background: rgba(94, 115, 183, 0.16);
+
+}
+
+.cinematic-table tbody tr:last-child td { border-bottom: 0; }
+
+.cinematic-table tbody tr:last-child td:first-child { border-bottom-left-radius: 13px; }
+
+.cinematic-table tbody tr:last-child td:last-child { border-bottom-right-radius: 13px; }
+
+@media (max-width: 640px) {
+
+    .cinematic-table { font-size: 0.8rem; }
+
+    .cinematic-table thead th, .cinematic-table tbody td { padding: 0.7rem 0.75rem; }
+
+}
+
+
+/* Minimal cinematic portfolio footer */
+
+.minimal-footer {
+
+    margin-top: 36px;
+
+    padding: 30px 16px 24px;
+
+    text-align: center;
+
+    color: #dce4f5;
+
+    background: linear-gradient(
+
+        180deg,
+
+        rgba(7, 14, 28, 0.45),
+
+        rgba(4, 9, 19, 0.92)
+
+    );
+
+    border-top: 1px solid rgba(151, 166, 255, 0.16);
+
+}
+
+
+.minimal-footer h3 {
+
+    margin: 0 0 9px;
+
+    color: #edf1ff;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+}
+
+
+.minimal-footer-role {
+
+    margin: 0;
+
+    color: #a4b1cc;
+
+    font-size: 12px;
+
+    letter-spacing: 0.25px;
+
+    line-height: 1.8;
+
+}
+
+
+.minimal-footer-role span {
+
+    margin: 0 5px;
+
+    color: #8e83ff;
+
+}
+
+
+.minimal-footer-socials {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin: 17px 0 18px;
+
+}
+
+
+.minimal-footer-socials a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    color: #aebbd3 !important;
+
+    background: transparent;
+
+    border: 1px solid transparent;
+
+    border-radius: 50%;
+
+    text-decoration: none !important;
+
+    transition: color 180ms ease,
+
+                background 180ms ease,
+
+                border-color 180ms ease,
+
+                transform 180ms ease;
+
+}
+
+
+.minimal-footer-socials a:hover {
+
+    color: #c4b5fd !important;
+
+    background: rgba(139, 124, 255, 0.09);
+
+    border-color: rgba(167, 139, 250, 0.3);
+
+    transform: translateY(-3px);
+
+}
+
+
+.minimal-footer-socials svg {
+
+    display: block;
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+
+.minimal-footer-copyright {
+
+    margin: 0;
+
+    color: #74829c;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2px;
+
+}
+
+
+@media (max-width: 480px) {
+
+    .minimal-footer {
+
+        padding: 26px 12px 20px;
+
+    }
+
+
+    .minimal-footer h3 {
+
+        font-size: 15px;
+
+    }
+
+
+    .minimal-footer-role {
+
+        font-size: 11px;
+
+    }
+
+
+    .minimal-footer-role span {
+
+        margin: 0 3px;
+
+    }
+
+}
+
+
+/* Keep the dashboard limitations section cinematic */
+
+[data-testid="stExpander"] {
+
+    background: rgba(9, 16, 30, 0.88) !important;
+
+    border: 1px solid rgba(139, 157, 255, 0.20) !important;
+
+    border-radius: 12px !important;
+
+    overflow: hidden;
+
+}
+
+
+[data-testid="stExpander"] summary {
+
+    background: linear-gradient(
+
+        100deg,
+
+        rgba(35, 43, 80, 0.95),
+
+        rgba(12, 23, 42, 0.98)
+
+    ) !important;
+
+    color: #dce5ff !important;
+
+}
+
+
+[data-testid="stExpander"] summary p,
+
+[data-testid="stExpander"] summary svg {
+
+    color: #c4b5fd !important;
+
+}
+
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+
+    background: rgba(7, 13, 25, 0.96) !important;
+
+    color: #dce5ff !important;
+
+}
+
+
+/* =========================================================
+   FINAL OVERRIDES — FOOTER AND CHAPTER 04 EXPANDER
+   ========================================================= */
+/* Compact cinematic portfolio footer */
+.minimal-footer {
+    position: relative;
+    margin: 22px 8px 8px;
+    padding: 20px 14px 16px;
+    text-align: center;
+    color: #dce4f5;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(91, 83, 210, 0.07),
+            transparent 65%
+        ),
+        linear-gradient(180deg, #0a1221, #070c16);
+    border: 1px solid rgba(151, 166, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.minimal-footer h3 {
+    margin: 0 0 5px;
+    color: #edf1ff !important;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+}
+
+.minimal-footer-role {
+    margin: 0 !important;
+    color: #9eacc5 !important;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.minimal-footer-role span {
+    margin: 0 4px;
+    color: #9285ff;
+}
+
+.minimal-footer-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    margin: 10px 0;
+}
+
+.minimal-footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: #aebbd3 !important;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    text-decoration: none !important;
+    transition: color 180ms ease,
+                background 180ms ease,
+                border-color 180ms ease,
+                transform 180ms ease;
+}
+
+.minimal-footer-socials a:hover {
+    color: #c4b5fd !important;
+    background: rgba(139, 124, 255, 0.09);
+    border-color: rgba(167, 139, 250, 0.28);
+    transform: translateY(-2px);
+}
+
+.minimal-footer-socials svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.minimal-footer-copyright {
+    margin: 0 !important;
+    color: #74829c !important;
+    font-size: 9px;
+    letter-spacing: 0.1px;
+}
+
+@media (max-width: 480px) {
+    .minimal-footer {
+        margin: 18px 3px 6px;
+        padding: 18px 10px 14px;
+        border-radius: 13px;
+    }
+
+    .minimal-footer h3 {
+        font-size: 14px;
+    }
+
+    .minimal-footer-role {
+        font-size: 10px;
+    }
+
+    .minimal-footer-role span {
+        margin: 0 2px;
+    }
+
+    .minimal-footer-socials {
+        gap: 10px;
+    }
+}
+
+/* Streamlit expander: style the summary and its nested surfaces. */
+[data-testid="stExpander"] {
+    background: rgba(8, 15, 28, 0.94) !important;
+    border: 1px solid rgba(139, 157, 255, 0.22) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14) !important;
+}
+
+[data-testid="stExpander"] details > summary,
+[data-testid="stExpander"] summary {
+    background: linear-gradient(105deg, #151d34 0%, #101a2c 55%, #0b1424 100%) !important;
+    color: #dce5ff !important;
+    border: 0 !important;
+}
+
+[data-testid="stExpander"] details > summary p,
+[data-testid="stExpander"] details > summary span,
+[data-testid="stExpander"] details > summary svg,
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary svg {
+    color: #c5d2f0 !important;
+    fill: currentColor;
+}
+
+[data-testid="stExpander"] details > summary:hover {
+    background: linear-gradient(105deg, #1b2542 0%, #132039 55%, #101a2c 100%) !important;
+}
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"],
+[data-testid="stExpander"] details > div {
+    background: #090f1b !important;
+    color: #dce5f5 !important;
+}
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] p,
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] li,
+[data-testid="stExpander"] details > div p,
+[data-testid="stExpander"] details > div li {
+    color: #cbd5e7 !important;
+    line-height: 1.75;
+}
+
+[data-testid="stExpander"] summary:focus-visible {
+    outline: 2px solid #a9baff !important;
+    outline-offset: -2px;
+}
+
+@media (max-width: 480px) {
+    .minimal-footer { padding: 25px 12px 20px; }
+    .minimal-footer h3 { font-size: 15px; }
+    .minimal-footer-role { font-size: 11px; }
+    .minimal-footer-role span { margin: 0 3px; }
+    .minimal-footer-socials { gap: 16px; }
+}
+
+/* Curved cinematic footer edges */
+.minimal-footer {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(151, 166, 255, 0.14);
+    border-top: 1px solid rgba(151, 166, 255, 0.22);
+    margin: 30px 8px 12px;
+    padding: 30px 16px 24px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 480px) {
+    .minimal-footer {
+        margin: 24px 4px 10px;
+        border-radius: 14px;
+        padding: 25px 12px 20px;
+    }
+}
+
+/* =========================================================
+   FINAL FOOTER OVERRIDE — COMPACT & MINIMAL
+   Original cinematic hero/background styles are preserved.
+   Keep this block at the very end of style.css.
+   ========================================================= */
+
+.stApp .minimal-footer {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 18px 0 8px !important;
+    padding: 16px 14px 12px !important;
+    text-align: center;
+    color: #dce4f5;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(91, 83, 210, 0.07),
+            transparent 65%
+        ),
+        linear-gradient(180deg, #0a1221, #070c16) !important;
+    border: 1px solid rgba(151, 166, 255, 0.15) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    overflow: hidden;
+}
+
+.stApp .minimal-footer h3 {
+    margin: 0 0 5px !important;
+    color: #edf1ff !important;
+    font-size: 16px !important;
+    font-weight: 650 !important;
+    line-height: 1.45 !important;
+    letter-spacing: 0 !important;
+}
+
+.stApp .minimal-footer .minimal-footer-role {
+    margin: 0 !important;
+    color: #aebbd3 !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    overflow-wrap: anywhere;
+}
+
+.stApp .minimal-footer .minimal-footer-role span {
+    display: inline-block;
+    margin: 0 4px !important;
+    color: #9285ff !important;
+}
+
+.stApp .minimal-footer .minimal-footer-socials {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap;
+    gap: 10px !important;
+    margin: 10px 0 9px !important;
+    padding: 0 !important;
+}
+
+.stApp .minimal-footer .minimal-footer-socials a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    vertical-align: middle;
+    color: #aebbd3 !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 50% !important;
+    text-decoration: none !important;
+    transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.stApp .minimal-footer .minimal-footer-socials a svg text {
+    dominant-baseline: middle;
+}
+
+.minimal-footer .minimal-footer-socials a:hover {
+    color: #d4dcff !important;
+    background: rgba(139, 124, 255, 0.09) !important;
+    border-color: rgba(167, 139, 250, 0.25) !important;
+    transform: none !important;
+}
+
+.stApp .minimal-footer .minimal-footer-socials a:focus-visible {
+    outline: 2px solid var(--accent, #a9baff) !important;
+    outline-offset: 2px;
+}
+
+.stApp .minimal-footer .minimal-footer-socials svg {
+    display: block;
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0;
+    margin: auto;
+}
+
+.stApp .minimal-footer .minimal-footer-copyright {
+    margin: 0 !important;
+    color: #8290aa !important;
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.05px;
+}
+
+@media (max-width: 480px) {
+    .stApp .minimal-footer {
+        margin: 14px 0 6px !important;
+        padding: 14px 10px 10px !important;
+        border-radius: 12px !important;
+    }
+
+    .stApp .minimal-footer h3 {
+        font-size: 13px !important;
+    }
+
+    .stApp .minimal-footer .minimal-footer-role {
+        font-size: 10px !important;
+    }
+
+    .stApp .minimal-footer .minimal-footer-role span {
+        margin: 0 3px !important;
+    }
+
+    .stApp .minimal-footer .minimal-footer-socials {
+        gap: 8px !important;
+        margin: 7px 0 !important;
+    }
+
+    .stApp .minimal-footer .minimal-footer-socials a {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    .stApp .minimal-footer .minimal-footer-socials svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .stApp .minimal-footer .minimal-footer-copyright {
+        font-size: 8px !important;
+    }
+}
+
+/* =========================================================
+   FINAL ALIGNMENT FIX — FOOTER
+   Explicit vertical layout prevents tagline, icons and copyright
+   from overlapping. Keep this block last in styles.css.
+   ========================================================= */
+.stApp .minimal-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    padding: 18px 16px 14px !important;
+    overflow: visible !important;
+}
+
+.stApp .minimal-footer > h3 {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 7px !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1.45 !important;
+    font-size: 16px !important;
+}
+
+.stApp .minimal-footer > .minimal-footer-role {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1.7 !important;
+    font-size: 12px !important;
+    white-space: normal !important;
+}
+
+.stApp .minimal-footer > .minimal-footer-socials {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+    width: auto !important;
+    min-height: 32px !important;
+    margin: 10px auto 9px !important;
+    padding: 0 !important;
+    gap: 10px !important;
+    line-height: 1 !important;
+}
+
+.stApp .minimal-footer > .minimal-footer-socials > a {
+    display: inline-flex !important;
+    flex: 0 0 30px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    transform: none !important;
+}
+
+.stApp .minimal-footer > .minimal-footer-socials > a > svg {
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+}
+
+.stApp .minimal-footer > .minimal-footer-copyright {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+    font-size: 10px !important;
+    white-space: normal !important;
+}
+
+@media (max-width: 480px) {
+    .stApp .minimal-footer {
+        padding: 15px 10px 12px !important;
+    }
+
+    .stApp .minimal-footer > h3 {
+        font-size: 15px !important;
+    }
+
+    .stApp .minimal-footer > .minimal-footer-role {
+        font-size: 11px !important;
+    }
+
+    .stApp .minimal-footer > .minimal-footer-socials {
+        gap: 8px !important;
+        margin: 8px auto !important;
+    }
+
+    .stApp .minimal-footer > .minimal-footer-socials > a {
+        flex-basis: 28px !important;
+        width: 28px !important;
+        min-width: 28px !important;
+        max-width: 28px !important;
+        height: 28px !important;
+        min-height: 28px !important;
+        max-height: 28px !important;
+    }
+
+    .stApp .minimal-footer > .minimal-footer-socials > a > svg {
+        width: 15px !important;
+        height: 15px !important;
+        min-width: 15px !important;
+        min-height: 15px !important;
+    }
+
+    .stApp .minimal-footer > .minimal-footer-copyright {
+        font-size: 9px !important;
+    }
+}
+
+/* Match footer email size to the professional tagline */
+.stApp .minimal-footer > .minimal-footer-copyright a[href^="mailto:"] {
+    font-size: 12px !important;
+    font-weight: inherit !important;
+    line-height: 1.7 !important;
+    color: #aebbd3 !important;
+    letter-spacing: inherit !important;
+    text-decoration: none !important;
+}
+
+.stApp .minimal-footer > .minimal-footer-copyright a[href^="mailto:"]:hover {
+    color: #d4dcff !important;
+    text-decoration: underline !important;
+}
+
+@media (max-width: 480px) {
+    .stApp .minimal-footer > .minimal-footer-copyright a[href^="mailto:"] {
+        font-size: 11px !important;
+    }
+}
+
+/* Improve metric help tooltip readability */
+[data-testid="stTooltipContent"] {
+    background: #111827 !important;
+    color: #e5e7eb !important;
+    border: 1px solid rgba(169, 186, 255, 0.3) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+    max-width: 320px !important;
+}
+
+[data-testid="stTooltipContent"] p {
+    color: #e5e7eb !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+}

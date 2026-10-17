@@ -1,0 +1,8 @@
+streamlit
+pandas
+requests
+fastapi
+uvicorn[standard]
+joblib
+scikit-learn==1.8.0
+plotly>=5.24,<7
