@@ -1276,12 +1276,6 @@ with st.container(key="chapter4_dashboard"):
             predictions = pd.read_csv(GROUP_ERROR_PATH)
             price_bands = pd.read_csv(PRICE_BAND_PATH)
 
-            st.write("Metrics shape:", metrics.shape)
-            st.write("Metrics columns:", metrics.columns.tolist())
-            st.write("Predictions shape:", predictions.shape)
-            st.write("Predictions columns:", predictions.columns.tolist())
-            st.write("Price bands shape:", price_bands.shape)
-            st.write("Price bands columns:", price_bands.columns.tolist())
 
             return metrics, predictions, price_bands, []
 
@@ -1373,70 +1367,38 @@ with st.container(key="chapter4_dashboard"):
             )
 
 
-            st.markdown("#### Model choice involves a trade-off")
-
-            comparison = pd.DataFrame(
-
-                {
-
-                    "Metric": ["MAE", "RMSE", "R²"],
-
-                    "Random Forest": [
-
-                        float(rf["MAE_mean"]),
-
-                        float(rf["RMSE_mean"]),
-
-                        float(rf["R2_mean"]),
-
-                    ],
-
-                    "Linear Regression": [
-
-                        float(lr["MAE_mean"]),
-
-                        float(lr["RMSE_mean"]),
-
-                        float(lr["R2_mean"]),
-
-                    ],
-
-                }
-
-            )
-
-            comparison_display = comparison.assign(
-
-                **{
-
-                    "Random Forest": comparison["Random Forest"].map(
-
-                        lambda value: f"{value:.3f}" if abs(value) < 1 else format_inr_lakh(value)
-
-                    ),
-
-                    "Linear Regression": comparison["Linear Regression"].map(
-
-                        lambda value: f"{value:.3f}" if abs(value) < 1 else format_inr_lakh(value)
-
-                    ),
-
-                }
-
-            )
-
-            render_cinematic_table(comparison_display, "Model evaluation comparison")
-
+            st.markdown("#### Compare all evaluated models")
             st.caption(
-
-                "Random Forest was selected for its lower mean MAE. Linear Regression "
-
-                "has lower mean RMSE and higher mean R² in this evaluation, so Random "
-
-                "Forest is not the winner on every metric."
-
+                "MAE and RMSE are shown in lakh rupees; lower is better. "
+                "For R², higher is better. R² is a model-fit statistic, not an accuracy percentage."
             )
 
+            model_names = metrics_df["model"].astype(str).tolist()
+            comparison_display = pd.DataFrame(
+                {
+                    "Metric": ["MAE (₹ lakh)", "RMSE (₹ lakh)", "R²"],
+                    **{
+                        model_name: [
+                            format_inr_lakh(float(row["MAE_mean"])),
+                            format_inr_lakh(float(row["RMSE_mean"])),
+                            f"{float(row['R2_mean']):.3f}",
+                        ]
+                        for model_name, (_, row) in zip(
+                            model_names, metrics_df.iterrows()
+                        )
+                    },
+                }
+            )
+            render_cinematic_table(
+                comparison_display,
+                "Model evaluation comparison using MAE, RMSE and R-squared",
+            )
+
+            best_mae_model = metrics_df.loc[metrics_df["MAE_mean"].idxmin(), "model"]
+            st.caption(
+                f"Lowest mean MAE in this evaluation: {best_mae_model}. "
+                "This does not mean the model is best on every metric or for every individual car."
+            )
 
             rf_oof = oof_predictions.loc[
 
