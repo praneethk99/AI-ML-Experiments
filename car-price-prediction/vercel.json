@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "src/index.py": {
+      "excludeFiles": "{static/**,.streamlit/**,reports/**,data/quikr_car.csv,data/car_data.csv,html_test.py,video_test.py,styles.css}"
+    }
+  }
+}
